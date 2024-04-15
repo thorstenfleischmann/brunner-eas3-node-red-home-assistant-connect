@@ -1,0 +1,1000 @@
+[
+    {
+        "id": "433969f8c75b2ee0",
+        "type": "subflow",
+        "name": "Change/1h",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "3c822a767dfdbbcd"
+                    },
+                    {
+                        "id": "d2b08e6149306709"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 600,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "3c822a767dfdbbcd",
+                        "port": 0
+                    },
+                    {
+                        "id": "d2b08e6149306709",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "d2b08e6149306709",
+        "type": "rbe",
+        "z": "433969f8c75b2ee0",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 310,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c822a767dfdbbcd",
+        "type": "delay",
+        "z": "433969f8c75b2ee0",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5abde5fb49756b11",
+        "type": "tab",
+        "label": "EAS3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c31662178248972e",
+        "type": "udp in",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "iface": "",
+        "port": "45454",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 60,
+        "y": 400,
+        "wires": [
+            [
+                "60bf1a8a2abdeda6",
+                "cef5ed26ce0e8434"
+            ]
+        ],
+        "info": "https://github.com/ioBroker/AdapterRequests/issues/761"
+    },
+    {
+        "id": "60bf1a8a2abdeda6",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "Rohtext",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "cef5ed26ce0e8434",
+        "type": "xml",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 230,
+        "y": 400,
+        "wires": [
+            [
+                "14504a0d98334c17"
+            ]
+        ]
+    },
+    {
+        "id": "14504a0d98334c17",
+        "type": "switch",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "bdle",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "d",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "c0b898b3744538d6"
+            ],
+            [
+                "90ab3512aa4f7be6"
+            ],
+            [
+                "b225101b13bbdb90"
+            ]
+        ]
+    },
+    {
+        "id": "e47a80ba0f57a055",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "BDLE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c286b480b8f52013",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "D",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "90ab3512aa4f7be6",
+        "type": "rbe",
+        "z": "5abde5fb49756b11",
+        "name": "d changed",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "c286b480b8f52013"
+            ]
+        ]
+    },
+    {
+        "id": "b225101b13bbdb90",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "unknown event",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "1009cb65e052d5aa",
+        "type": "change",
+        "z": "5abde5fb49756b11",
+        "name": "csv to payload",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "xml",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "xml.bdle._",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 320,
+        "wires": [
+            [
+                "cb5d6b5cd3468be5",
+                "e47a80ba0f57a055",
+                "a61a613e857e8078"
+            ]
+        ]
+    },
+    {
+        "id": "cb5d6b5cd3468be5",
+        "type": "split",
+        "z": "5abde5fb49756b11",
+        "name": "split csv",
+        "splt": ";",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 950,
+        "y": 320,
+        "wires": [
+            [
+                "20b529dbad0c8699"
+            ]
+        ]
+    },
+    {
+        "id": "20b529dbad0c8699",
+        "type": "switch",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "8",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "9",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "10",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "11",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "12",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "13",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 14,
+        "x": 1120,
+        "y": 320,
+        "wires": [
+            [
+                "9b07c545d9883424"
+            ],
+            [
+                "c9addc22160a485c"
+            ],
+            [],
+            [],
+            [],
+            [],
+            [
+                "4a8e4ad343335966"
+            ],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [
+                "89f1170aaaa82f7c"
+            ],
+            []
+        ],
+        "outputLabels": [
+            "S+",
+            "Öko",
+            "dunno-1",
+            "Display Helligkeit",
+            "dunno-1",
+            "NLH?",
+            "Tür Status?",
+            "Version",
+            "VERP?",
+            "dunno-0",
+            "dunno0-4-12",
+            "dunno-0",
+            "Temperatur",
+            "dunno-40"
+        ]
+    },
+    {
+        "id": "0c7811edd3e91dce",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "s+",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b2829e3cd7a57a9c",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "öko",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "8a51cf3cda282d98",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "door",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "3645c5878a4ab238",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "temp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1580,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "178049a5d8e772fe",
+        "type": "debug",
+        "z": "5abde5fb49756b11",
+        "name": "stat",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "08b1959198e2711b",
+        "type": "change",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "xml.bdle.$.stat",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1140,
+        "y": 100,
+        "wires": [
+            [
+                "74cd759ac261a393"
+            ]
+        ]
+    },
+    {
+        "id": "93df807c0f758b53",
+        "type": "change",
+        "z": "5abde5fb49756b11",
+        "name": "tonumber",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 420,
+        "wires": [
+            [
+                "3645c5878a4ab238",
+                "38b1c398f82a37af"
+            ]
+        ]
+    },
+    {
+        "id": "46d9189a30f1e201",
+        "type": "change",
+        "z": "5abde5fb49756b11",
+        "name": "toBoolean",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload = \"1\" ? true : false",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 340,
+        "wires": [
+            [
+                "8a51cf3cda282d98",
+                "d767325e39b8a24c"
+            ]
+        ]
+    },
+    {
+        "id": "c15f98c70214e03e",
+        "type": "change",
+        "z": "5abde5fb49756b11",
+        "name": "toBoolean",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload = \"1\" ? true : false",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 180,
+        "wires": [
+            [
+                "0c7811edd3e91dce",
+                "ded01969e984d818"
+            ]
+        ]
+    },
+    {
+        "id": "218bf59e5c6bf101",
+        "type": "change",
+        "z": "5abde5fb49756b11",
+        "name": "toBoolean",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload = \"1\" ? true : false",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1430,
+        "y": 260,
+        "wires": [
+            [
+                "b2829e3cd7a57a9c"
+            ]
+        ]
+    },
+    {
+        "id": "74cd759ac261a393",
+        "type": "function",
+        "z": "5abde5fb49756b11",
+        "name": "map values",
+        "func": "var input = msg.payload;\n\nvar output;\nswitch(input) {\n    case \"0\":\n        output = \"Türe offen\";\n        break;\n    case \"1\":\n        output = \"Abbrand Stufe 1\";\n        break;\n    case \"2\":\n        output = \"Abbrand Stufe 2\";\n        break;\n    case \"3\":\n        output = \"Abbrand Stufe 3\";\n        break;\n    case \"4\":\n        output = \"Abbrand Stufe 4\";\n        break;\n    case \"5\":\n        output = \"Abbrand Ende\";\n        break;\n    case \"6\":\n        output = \"Fehler\";\n        break;\n    case \"7\":\n        output = \"Kein Abbrand\";\n        break;\n    default:\n        output = \"unknown - \" + input;\n}\n\nmsg.payload = output\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 100,
+        "wires": [
+            [
+                "178049a5d8e772fe",
+                "c69bdeed19373dea"
+            ]
+        ]
+    },
+    {
+        "id": "d767325e39b8a24c",
+        "type": "ha-binary-sensor",
+        "z": "5abde5fb49756b11",
+        "name": "Door",
+        "entityConfig": "b76d33d986d9f400",
+        "version": 0,
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1740,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ded01969e984d818",
+        "type": "ha-binary-sensor",
+        "z": "5abde5fb49756b11",
+        "name": "S+",
+        "entityConfig": "15f50851fa51dc85",
+        "version": 0,
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1740,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c69bdeed19373dea",
+        "type": "ha-sensor",
+        "z": "5abde5fb49756b11",
+        "name": "eas state",
+        "entityConfig": "6317c3a9314a0fb5",
+        "version": 0,
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1730,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "38b1c398f82a37af",
+        "type": "ha-sensor",
+        "z": "5abde5fb49756b11",
+        "name": "easTemperature",
+        "entityConfig": "3aedfa7914ebf0da",
+        "version": 0,
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1770,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b07c545d9883424",
+        "type": "subflow:433969f8c75b2ee0",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "x": 1270,
+        "y": 180,
+        "wires": [
+            [
+                "c15f98c70214e03e"
+            ]
+        ]
+    },
+    {
+        "id": "c9addc22160a485c",
+        "type": "subflow:433969f8c75b2ee0",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "x": 1270,
+        "y": 260,
+        "wires": [
+            [
+                "218bf59e5c6bf101"
+            ]
+        ]
+    },
+    {
+        "id": "4a8e4ad343335966",
+        "type": "subflow:433969f8c75b2ee0",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "x": 1270,
+        "y": 340,
+        "wires": [
+            [
+                "46d9189a30f1e201"
+            ]
+        ]
+    },
+    {
+        "id": "89f1170aaaa82f7c",
+        "type": "subflow:433969f8c75b2ee0",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "x": 1270,
+        "y": 420,
+        "wires": [
+            [
+                "93df807c0f758b53"
+            ]
+        ]
+    },
+    {
+        "id": "a61a613e857e8078",
+        "type": "subflow:433969f8c75b2ee0",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "x": 950,
+        "y": 100,
+        "wires": [
+            [
+                "08b1959198e2711b"
+            ]
+        ]
+    },
+    {
+        "id": "c0b898b3744538d6",
+        "type": "subflow:433969f8c75b2ee0",
+        "z": "5abde5fb49756b11",
+        "name": "",
+        "x": 550,
+        "y": 320,
+        "wires": [
+            [
+                "1009cb65e052d5aa"
+            ]
+        ]
+    },
+    {
+        "id": "b76d33d986d9f400",
+        "type": "ha-entity-config",
+        "server": "6cf31a8c.597fe4",
+        "deviceConfig": "0846393121955d65",
+        "name": "Door",
+        "version": "6",
+        "entityType": "binary_sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Türe"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "door"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "15f50851fa51dc85",
+        "type": "ha-entity-config",
+        "server": "6cf31a8c.597fe4",
+        "deviceConfig": "0846393121955d65",
+        "name": "SPlus",
+        "version": "6",
+        "entityType": "binary_sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "S+"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "6317c3a9314a0fb5",
+        "type": "ha-entity-config",
+        "server": "6cf31a8c.597fe4",
+        "deviceConfig": "0846393121955d65",
+        "name": "easstate3",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "easstate3"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "3aedfa7914ebf0da",
+        "type": "ha-entity-config",
+        "server": "6cf31a8c.597fe4",
+        "deviceConfig": "0846393121955d65",
+        "name": "easTemperature",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "easTemperature"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "temperature"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "°C"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "6cf31a8c.597fe4",
+        "type": "server",
+        "name": "Home Assistant",
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "",
+        "connectionDelay": false,
+        "cacheJson": false,
+        "heartbeat": false,
+        "heartbeatInterval": "10",
+        "statusSeparator": "",
+        "enableGlobalContextStore": false
+    },
+    {
+        "id": "0846393121955d65",
+        "type": "ha-device-config",
+        "name": "EAS",
+        "hwVersion": "",
+        "manufacturer": "Node-RED",
+        "model": "",
+        "swVersion": ""
+    }
+]
